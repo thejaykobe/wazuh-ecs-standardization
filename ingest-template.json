@@ -1,0 +1,383 @@
+{
+      "on_failure" : [
+        {
+          "drop" : { }
+        }
+      ],
+      "description" : "Wazuh alerts pipeline",
+      "processors" : [
+        {
+          "json" : {
+            "field" : "message",
+            "add_to_root" : true
+          }
+        },
+        {
+            "remove": {
+                "field": "event.module"
+            }
+        },
+        {
+          "geoip" : {
+            "field" : "data.srcip",
+            "target_field" : "GeoLocation",
+            "properties" : [
+              "city_name",
+              "country_name",
+              "region_name",
+              "location"
+            ],
+            "ignore_missing" : true,
+            "ignore_failure" : true
+          }
+        },
+        {
+          "geoip" : {
+            "ignore_failure" : true,
+            "field" : "data.win.eventdata.ipAddress",
+            "target_field" : "GeoLocation",
+            "properties" : [
+              "city_name",
+              "country_name",
+              "region_name",
+              "location"
+            ],
+            "ignore_missing" : true
+          }
+        },
+        {
+          "geoip" : {
+            "field" : "data.aws.sourceIPAddress",
+            "target_field" : "GeoLocation",
+            "properties" : [
+              "city_name",
+              "country_name",
+              "region_name",
+              "location"
+            ],
+            "ignore_missing" : true,
+            "ignore_failure" : true
+          }
+        },
+        {
+          "geoip" : {
+            "properties" : [
+              "city_name",
+              "country_name",
+              "region_name",
+              "location"
+            ],
+            "ignore_missing" : true,
+            "ignore_failure" : true,
+            "field" : "data.gcp.jsonPayload.sourceIP",
+            "target_field" : "GeoLocation"
+          }
+        },
+        {
+          "geoip" : {
+            "field" : "data.office365.ClientIP",
+            "target_field" : "GeoLocation",
+            "properties" : [
+              "city_name",
+              "country_name",
+              "region_name",
+              "location"
+            ],
+            "ignore_missing" : true,
+            "ignore_failure" : true
+          }
+        },
+        {
+          "date" : {
+            "field" : "timestamp",
+            "target_field" : "@timestamp",
+            "formats" : [
+              "ISO8601"
+            ],
+            "ignore_failure" : false
+          }
+        },
+        {
+          "date_index_name" : {
+            "index_name_prefix" : "{{{fields.index_prefix}}}",
+            "index_name_format" : "yyyy.MM.dd",
+            "ignore_failure" : false,
+            "field" : "timestamp",
+            "date_rounding" : "d"
+          }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.category",
+                "target_field": "event.category",
+                "ignore_missing": true,
+                "ignore_failure": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.processName",
+                "target_field": "process.name",
+                "ignore_missing": true,
+                "ignore_failure": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.system.eventID",
+                "target_field": "event.code",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.subjectUserName",
+                "target_field": "source.user.name",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.subjectUserSid",
+                "target_field": "source.user.id",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.system.channel",
+                "target_field": "event.module",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.system.processID",
+                "target_field": "process.pid",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.system.message",
+                "target_field": "event.original",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.targetUserSid",
+                "target_field": "destination.user.id",
+                "ignore_missing": true,
+                "ignore_failure":true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.system.computer",
+                "target_field": "destination.domain",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.newProcessName",
+                "target_field": "process.executable",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.parentProcessName",
+                "target_field": "process.parent.executable",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.system.threadID",
+                "target_field": "process.thread.id",
+                "ignore_missing": true,
+                "ignore_failure": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.binary",
+                "target_field": "process.binary",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "set": {
+                "field": "process.command_line",
+                "value": "{{data.audit.command}}",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "field": "process.command_line",
+                "value": "{{data.audit.execve.a0}} {{data.audit.execve.a1}} {{data.audit.execve.a2}} {{data.audit.execve.a3}} {{data.audit.execve.a4}} {{data.audit.execve.a5}} {{data.audit.execve.a6}} {{data.audit.execve.a7}} {{data.audit.execve.a8}} {{data.audit.execve.a9}} {{data.audit.execve.a10}} {{data.audit.execve.a11}} {{data.audit.execve.a12}} {{data.audit.execve.a13}} {{data.audit.execve.a14}} {{data.audit.execve.a15}} {{data.audit.execve.a16}} {{data.audit.execve.a17}} {{data.audit.execve.a18}} {{data.audit.execve.a19}} {{data.audit.execve.a20}}",
+                "ignore_failure": true,
+                "ignore_empty_value": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.audit.uid",
+                "target_field": "source.user.id",
+                "ignore_missing": true,
+                "ignore_failure": true  
+            } 
+        },
+        {
+            "rename": {
+                "field": "data.audit.gid",
+                "target_field": "source.user.group.id",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.audit.pid",
+                "target_field": "process.pid",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.audit.ppid",
+                "target_field": "process.parent.pid",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.audit.exe",
+                "target_field": "process.executable",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+          "remove" : {
+            "ignore_missing" : true,
+            "ignore_failure" : true,
+            "field" : "message"
+          }
+        },
+        {
+          "remove" : {
+            "field" : "ecs",
+            "ignore_missing" : true,
+            "ignore_failure" : true
+          }
+        },
+        {
+          "remove" : {
+            "field" : "beat",
+            "ignore_missing" : true,
+            "ignore_failure" : true
+          }
+        },
+        {
+          "remove" : {
+            "field" : "input_type",
+            "ignore_missing" : true,
+            "ignore_failure" : true
+          }
+        },
+        {
+          "remove" : {
+            "ignore_failure" : true,
+            "field" : "tags",
+            "ignore_missing" : true
+          }
+        },
+        {
+          "remove" : {
+            "field" : "count",
+            "ignore_missing" : true,
+            "ignore_failure" : true
+          }
+        },
+        {
+          "remove" : {
+            "ignore_missing" : true,
+            "ignore_failure" : true,
+            "field" : "@version"
+          }
+        },
+        {
+          "remove" : {
+            "field" : "log",
+            "ignore_missing" : true,
+            "ignore_failure" : true
+          }
+        },
+        {
+          "remove" : {
+            "ignore_missing" : true,
+            "ignore_failure" : true,
+            "field" : "offset"
+          }
+        },
+        {
+          "remove" : {
+            "ignore_missing" : true,
+            "ignore_failure" : true,
+            "field" : "type"
+          }
+        },
+        {
+          "remove" : {
+            "ignore_failure" : true,
+            "field" : "host",
+            "ignore_missing" : true
+          }
+        },
+        {
+          "remove" : {
+            "field" : "fields",
+            "ignore_missing" : true,
+            "ignore_failure" : true
+          }
+        },
+        {
+          "remove" : {
+            "field" : "event",
+            "ignore_missing" : true,
+            "ignore_failure" : true
+          }
+        },
+        {
+          "remove" : {
+            "field" : "fileset",
+            "ignore_missing" : true,
+            "ignore_failure" : true
+          }
+        },
+        {
+          "remove" : {
+            "field" : "service",
+            "ignore_missing" : true,
+            "ignore_failure" : true
+          }
+        }
+      ]
+  }
+  
