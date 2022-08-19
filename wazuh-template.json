@@ -1,0 +1,2142 @@
+{
+      "order" : 0,
+      "version" : 1,
+      "index_patterns" : [
+        "wazuh-alerts-4.x-*",
+        "wazuh-archives-4.x-*"
+      ],
+      "settings" : {
+        "index" : {
+          "mapping" : {
+            "total_fields" : {
+              "limit" : "10000"
+            }
+          },
+          "refresh_interval" : "5s",
+          "number_of_shards" : "3",
+          "auto_expand_replicas" : "0-1",
+          "number_of_replicas" : "0",
+          "query" : {
+            "default_field" : [
+              "GeoLocation.city_name",
+              "GeoLocation.continent_code",
+              "GeoLocation.country_code2",
+              "GeoLocation.country_code3",
+              "GeoLocation.country_name",
+              "GeoLocation.ip",
+              "GeoLocation.postal_code",
+              "GeoLocation.real_region_name",
+              "GeoLocation.region_name",
+              "GeoLocation.timezone",
+              "agent.id",
+              "agent.ip",
+              "agent.name",
+              "cluster.name",
+              "cluster.node",
+              "command",
+              "data",
+              "data.action",
+              "data.audit",
+              "data.audit.acct",
+              "data.audit.arch",
+              "data.audit.auid",
+              "data.audit.command",
+              "data.audit.cwd",
+              "data.audit.dev",
+              "data.audit.directory.inode",
+              "data.audit.directory.mode",
+              "data.audit.directory.name",
+              "data.audit.egid",
+              "data.audit.enforcing",
+              "data.audit.euid",
+              "data.audit.exe",
+              "data.audit.execve.a0",
+              "data.audit.execve.a1",
+              "data.audit.execve.a2",
+              "data.audit.execve.a3",
+              "data.audit.exit",
+              "data.audit.file.inode",
+              "data.audit.file.mode",
+              "data.audit.file.name",
+              "data.audit.fsgid",
+              "data.audit.fsuid",
+              "data.audit.gid",
+              "data.audit.id",
+              "data.audit.key",
+              "data.audit.list",
+              "data.audit.old-auid",
+              "data.audit.old-ses",
+              "data.audit.old_enforcing",
+              "data.audit.old_prom",
+              "data.audit.op",
+              "data.audit.pid",
+              "data.audit.ppid",
+              "data.audit.prom",
+              "data.audit.res",
+              "data.audit.session",
+              "data.audit.sgid",
+              "data.audit.srcip",
+              "data.audit.subj",
+              "data.audit.success",
+              "data.audit.suid",
+              "data.audit.syscall",
+              "data.audit.tty",
+              "data.audit.uid",
+              "data.aws.accountId",
+              "data.aws.account_id",
+              "data.aws.action",
+              "data.aws.actor",
+              "data.aws.aws_account_id",
+              "data.aws.description",
+              "data.aws.dstport",
+              "data.aws.errorCode",
+              "data.aws.errorMessage",
+              "data.aws.eventID",
+              "data.aws.eventName",
+              "data.aws.eventSource",
+              "data.aws.eventType",
+              "data.aws.id",
+              "data.aws.name",
+              "data.aws.requestParameters.accessKeyId",
+              "data.aws.requestParameters.bucketName",
+              "data.aws.requestParameters.gatewayId",
+              "data.aws.requestParameters.groupDescription",
+              "data.aws.requestParameters.groupId",
+              "data.aws.requestParameters.groupName",
+              "data.aws.requestParameters.host",
+              "data.aws.requestParameters.hostedZoneId",
+              "data.aws.requestParameters.instanceId",
+              "data.aws.requestParameters.instanceProfileName",
+              "data.aws.requestParameters.loadBalancerName",
+              "data.aws.requestParameters.loadBalancerPorts",
+              "data.aws.requestParameters.masterUserPassword",
+              "data.aws.requestParameters.masterUsername",
+              "data.aws.requestParameters.name",
+              "data.aws.requestParameters.natGatewayId",
+              "data.aws.requestParameters.networkAclId",
+              "data.aws.requestParameters.path",
+              "data.aws.requestParameters.policyName",
+              "data.aws.requestParameters.port",
+              "data.aws.requestParameters.stackId",
+              "data.aws.requestParameters.stackName",
+              "data.aws.requestParameters.subnetId",
+              "data.aws.requestParameters.subnetIds",
+              "data.aws.requestParameters.volumeId",
+              "data.aws.requestParameters.vpcId",
+              "data.aws.resource.accessKeyDetails.accessKeyId",
+              "data.aws.resource.accessKeyDetails.principalId",
+              "data.aws.resource.accessKeyDetails.userName",
+              "data.aws.resource.instanceDetails.instanceId",
+              "data.aws.resource.instanceDetails.instanceState",
+              "data.aws.resource.instanceDetails.networkInterfaces.privateDnsName",
+              "data.aws.resource.instanceDetails.networkInterfaces.publicDnsName",
+              "data.aws.resource.instanceDetails.networkInterfaces.subnetId",
+              "data.aws.resource.instanceDetails.networkInterfaces.vpcId",
+              "data.aws.resource.instanceDetails.tags.value",
+              "data.aws.responseElements.AssociateVpcCidrBlockResponse.vpcId",
+              "data.aws.responseElements.description",
+              "data.aws.responseElements.instanceId",
+              "data.aws.responseElements.instances.instanceId",
+              "data.aws.responseElements.instancesSet.items.instanceId",
+              "data.aws.responseElements.listeners.port",
+              "data.aws.responseElements.loadBalancerName",
+              "data.aws.responseElements.loadBalancers.vpcId",
+              "data.aws.responseElements.loginProfile.userName",
+              "data.aws.responseElements.networkAcl.vpcId",
+              "data.aws.responseElements.ownerId",
+              "data.aws.responseElements.publicIp",
+              "data.aws.responseElements.user.userId",
+              "data.aws.responseElements.user.userName",
+              "data.aws.responseElements.volumeId",
+              "data.aws.service.serviceName",
+              "data.aws.severity",
+              "data.aws.source",
+              "data.aws.sourceIPAddress",
+              "data.aws.srcport",
+              "data.aws.userIdentity.accessKeyId",
+              "data.aws.userIdentity.accountId",
+              "data.aws.userIdentity.userName",
+              "data.aws.vpcEndpointId",
+              "data.command",
+              "data.cis.group",
+              "data.cis.rule_title",
+              "data.data",
+              "data.docker.Actor.Attributes.container",
+              "data.docker.Actor.Attributes.image",
+              "data.docker.Actor.Attributes.name",
+              "data.docker.Actor.ID",
+              "data.docker.id",
+              "data.docker.message",
+              "data.docker.status",
+              "data.dstip",
+              "data.dstport",
+              "data.dstuser",
+              "data.extra_data",
+              "data.gcp.jsonPayload.queryName",
+              "data.gcp.jsonPayload.vmInstanceName",
+              "data.gcp.resource.labels.location",
+              "data.gcp.resource.labels.project_id",
+              "data.gcp.resource.labels.source_type",
+              "data.gcp.resource.type",
+              "data.github.org",
+              "data.github.actor",
+              "data.github.action",
+              "data.github.repo",
+              "data.hardware.serial",
+              "data.id",
+              "data.integration",
+              "data.netinfo.iface.adapter",
+              "data.netinfo.iface.ipv4.address",
+              "data.netinfo.iface.ipv6.address",
+              "data.netinfo.iface.mac",
+              "data.netinfo.iface.name",
+              "data.office365.Actor.ID",
+              "data.office365.UserId",
+              "data.office365.Operation",
+              "data.office365.ClientIP",
+              "data.os.architecture",
+              "data.os.build",
+              "data.os.codename",
+              "data.os.hostname",
+              "data.os.major",
+              "data.os.minor",
+              "data.os.patch",
+              "data.os.name",
+              "data.os.platform",
+              "data.os.release",
+              "data.os.release_version",
+              "data.os.display_version",
+              "data.os.sysname",
+              "data.os.version",
+              "data.oscap.check.description",
+              "data.oscap.check.id",
+              "data.oscap.check.identifiers",
+              "data.oscap.check.oval.id",
+              "data.oscap.check.rationale",
+              "data.oscap.check.references",
+              "data.oscap.check.result",
+              "data.oscap.check.severity",
+              "data.oscap.check.title",
+              "data.oscap.scan.benchmark.id",
+              "data.oscap.scan.content",
+              "data.oscap.scan.id",
+              "data.oscap.scan.profile.id",
+              "data.oscap.scan.profile.title",
+              "data.osquery.columns.address",
+              "data.osquery.columns.command",
+              "data.osquery.columns.description",
+              "data.osquery.columns.dst_ip",
+              "data.osquery.columns.gid",
+              "data.osquery.columns.hostname",
+              "data.osquery.columns.md5",
+              "data.osquery.columns.path",
+              "data.osquery.columns.sha1",
+              "data.osquery.columns.sha256",
+              "data.osquery.columns.src_ip",
+              "data.osquery.columns.user",
+              "data.osquery.columns.username",
+              "data.osquery.name",
+              "data.osquery.pack",
+              "data.port.process",
+              "data.port.protocol",
+              "data.port.state",
+              "data.process.args",
+              "data.process.cmd",
+              "data.process.egroup",
+              "data.process.euser",
+              "data.process.fgroup",
+              "data.process.name",
+              "data.process.rgroup",
+              "data.process.ruser",
+              "data.process.sgroup",
+              "data.process.state",
+              "data.process.suser",
+              "data.program.architecture",
+              "data.program.description",
+              "data.program.format",
+              "data.program.location",
+              "data.program.multiarch",
+              "data.program.name",
+              "data.program.priority",
+              "data.program.section",
+              "data.program.source",
+              "data.program.vendor",
+              "data.program.version",
+              "data.protocol",
+              "data.pwd",
+              "data.sca",
+              "data.sca.check.compliance.cis",
+              "data.sca.check.compliance.cis_csc",
+              "data.sca.check.compliance.pci_dss",
+              "data.sca.check.compliance.hipaa",
+              "data.sca.check.compliance.nist_800_53",
+              "data.sca.check.description",
+              "data.sca.check.directory",
+              "data.sca.check.file",
+              "data.sca.check.id",
+              "data.sca.check.previous_result",
+              "data.sca.check.process",
+              "data.sca.check.rationale",
+              "data.sca.check.reason",
+              "data.sca.check.references",
+              "data.sca.check.registry",
+              "data.sca.check.remediation",
+              "data.sca.check.result",
+              "data.sca.check.status",
+              "data.sca.check.title",
+              "data.sca.description",
+              "data.sca.file",
+              "data.sca.invalid",
+              "data.sca.name",
+              "data.sca.policy",
+              "data.sca.policy_id",
+              "data.sca.scan_id",
+              "data.sca.total_checks",
+              "data.script",
+              "data.src_ip",
+              "data.src_port",
+              "data.srcip",
+              "data.srcport",
+              "data.srcuser",
+              "data.status",
+              "data.system_name",
+              "data.title",
+              "data.tty",
+              "data.uid",
+              "data.url",
+              "data.virustotal.description",
+              "data.virustotal.error",
+              "data.virustotal.found",
+              "data.virustotal.permalink",
+              "data.virustotal.scan_date",
+              "data.virustotal.sha1",
+              "data.virustotal.source.alert_id",
+              "data.virustotal.source.file",
+              "data.virustotal.source.md5",
+              "data.virustotal.source.sha1",
+              "data.vulnerability.cve",
+              "data.vulnerability.cvss.cvss2.base_score",
+              "data.vulnerability.cvss.cvss2.exploitability_score",
+              "data.vulnerability.cvss.cvss2.impact_score",
+              "data.vulnerability.cvss.cvss2.vector.access_complexity",
+              "data.vulnerability.cvss.cvss2.vector.attack_vector",
+              "data.vulnerability.cvss.cvss2.vector.authentication",
+              "data.vulnerability.cvss.cvss2.vector.availability",
+              "data.vulnerability.cvss.cvss2.vector.confidentiality_impact",
+              "data.vulnerability.cvss.cvss2.vector.integrity_impact",
+              "data.vulnerability.cvss.cvss2.vector.privileges_required",
+              "data.vulnerability.cvss.cvss2.vector.scope",
+              "data.vulnerability.cvss.cvss2.vector.user_interaction",
+              "data.vulnerability.cvss.cvss3.base_score",
+              "data.vulnerability.cvss.cvss3.exploitability_score",
+              "data.vulnerability.cvss.cvss3.impact_score",
+              "data.vulnerability.cvss.cvss3.vector.access_complexity",
+              "data.vulnerability.cvss.cvss3.vector.attack_vector",
+              "data.vulnerability.cvss.cvss3.vector.authentication",
+              "data.vulnerability.cvss.cvss3.vector.availability",
+              "data.vulnerability.cvss.cvss3.vector.confidentiality_impact",
+              "data.vulnerability.cvss.cvss3.vector.integrity_impact",
+              "data.vulnerability.cvss.cvss3.vector.privileges_required",
+              "data.vulnerability.cvss.cvss3.vector.scope",
+              "data.vulnerability.cvss.cvss3.vector.user_interaction",
+              "data.vulnerability.cwe_reference",
+              "data.vulnerability.package.source",
+              "data.vulnerability.package.architecture",
+              "data.vulnerability.package.condition",
+              "data.vulnerability.package.generated_cpe",
+              "data.vulnerability.package.name",
+              "data.vulnerability.package.version",
+              "data.vulnerability.rationale",
+              "data.vulnerability.severity",
+              "data.vulnerability.title",
+              "data.vulnerability.assigner",
+              "data.vulnerability.cve_version",
+              "data.win.eventdata.auditPolicyChanges",
+              "data.win.eventdata.auditPolicyChangesId",
+              "data.win.eventdata.binary",
+              "data.win.eventdata.category",
+              "data.win.eventdata.categoryId",
+              "data.win.eventdata.data",
+              "data.win.eventdata.image",
+              "data.win.eventdata.ipAddress",
+              "data.win.eventdata.ipPort",
+              "data.win.eventdata.keyName",
+              "data.win.eventdata.logonGuid",
+              "data.win.eventdata.logonProcessName",
+              "data.win.eventdata.operation",
+              "data.win.eventdata.parentImage",
+              "data.win.eventdata.processId",
+              "data.win.eventdata.processName",
+              "data.win.eventdata.providerName",
+              "data.win.eventdata.returnCode",
+              "data.win.eventdata.service",
+              "data.win.eventdata.status",
+              "data.win.eventdata.subcategory",
+              "data.win.eventdata.subcategoryGuid",
+              "data.win.eventdata.subcategoryId",
+              "data.win.eventdata.subjectDomainName",
+              "data.win.eventdata.subjectLogonId",
+              "data.win.eventdata.subjectUserName",
+              "data.win.eventdata.subjectUserSid",
+              "data.win.eventdata.targetDomainName",
+              "data.win.eventdata.targetLinkedLogonId",
+              "data.win.eventdata.targetLogonId",
+              "data.win.eventdata.targetUserName",
+              "data.win.eventdata.targetUserSid",
+              "data.win.eventdata.workstationName",
+              "data.win.system.channel",
+              "data.win.system.computer",
+              "data.win.system.eventID",
+              "data.win.system.eventRecordID",
+              "data.win.system.eventSourceName",
+              "data.win.system.keywords",
+              "data.win.system.level",
+              "data.win.system.message",
+              "data.win.system.opcode",
+              "data.win.system.processID",
+              "data.win.system.providerGuid",
+              "data.win.system.providerName",
+              "data.win.system.securityUserID",
+              "data.win.system.severityValue",
+              "data.win.system.userID",
+              "decoder.ftscomment",
+              "decoder.name",
+              "decoder.parent",
+              "full_log",
+              "host",
+              "id",
+              "input",
+              "location",
+              "manager.name",
+              "message",
+              "offset",
+              "predecoder.hostname",
+              "predecoder.program_name",
+              "previous_log",
+              "previous_output",
+              "program_name",
+              "rule.cis",
+              "rule.cve",
+              "rule.description",
+              "rule.gdpr",
+              "rule.gpg13",
+              "rule.groups",
+              "rule.id",
+              "rule.info",
+              "rule.mitre.id",
+              "rule.mitre.tactic",
+              "rule.mitre.technique",
+              "rule.pci_dss",
+              "rule.hipaa",
+              "rule.nist_800_53",
+              "syscheck.audit.effective_user.id",
+              "syscheck.audit.effective_user.name",
+              "syscheck.audit.group.id",
+              "syscheck.audit.group.name",
+              "syscheck.audit.login_user.id",
+              "syscheck.audit.login_user.name",
+              "syscheck.audit.process.id",
+              "syscheck.audit.process.name",
+              "syscheck.audit.process.ppid",
+              "syscheck.audit.user.id",
+              "syscheck.audit.user.name",
+              "syscheck.diff",
+              "syscheck.event",
+              "syscheck.gid_after",
+              "syscheck.gid_before",
+              "syscheck.gname_after",
+              "syscheck.gname_before",
+              "syscheck.inode_after",
+              "syscheck.inode_before",
+              "syscheck.md5_after",
+              "syscheck.md5_before",
+              "syscheck.path",
+              "syscheck.mode",
+              "syscheck.perm_after",
+              "syscheck.perm_before",
+              "syscheck.sha1_after",
+              "syscheck.sha1_before",
+              "syscheck.sha256_after",
+              "syscheck.sha256_before",
+              "syscheck.tags",
+              "syscheck.uid_after",
+              "syscheck.uid_before",
+              "syscheck.uname_after",
+              "syscheck.uname_before",
+              "syscheck.arch",
+              "syscheck.value_name",
+              "syscheck.value_type",
+              "syscheck.changed_attributes",
+              "title",
+              "type",
+              "event.code",
+              "process.pid",
+              "process.name",
+              "event.category",
+              "source.user.name",
+              "source.user.id",
+              "event.module",
+              "event.original",
+              "destination.user.id",
+              "destination.domain",
+              "process.executable",
+              "process.parent.executable",
+              "process.thread.id",
+              "source.user.group.id"
+            ]
+          }
+        }
+      },
+      "mappings" : {
+        "dynamic_templates" : [
+          {
+            "string_as_keyword" : {
+              "mapping" : {
+                "type" : "keyword"
+              },
+              "match_mapping_type" : "string"
+            }
+          }
+        ],
+        "date_detection" : false,
+        "properties" : {
+          "syscheck" : {
+            "properties" : {
+              "size_before" : {
+                "type" : "long"
+              },
+              "mtime_after" : {
+                "format" : "date_optional_time",
+                "type" : "date"
+              },
+              "uname_after" : {
+                "type" : "keyword"
+              },
+              "size_after" : {
+                "type" : "long"
+              },
+              "sha256_before" : {
+                "type" : "keyword"
+              },
+              "uid_before" : {
+                "type" : "keyword"
+              },
+              "mode" : {
+                "type" : "keyword"
+              },
+              "path" : {
+                "type" : "keyword"
+              },
+              "gname_after" : {
+                "type" : "keyword"
+              },
+              "audit" : {
+                "properties" : {
+                  "process" : {
+                    "properties" : {
+                      "name" : {
+                        "type" : "keyword"
+                      },
+                      "id" : {
+                        "type" : "keyword"
+                      },
+                      "ppid" : {
+                        "type" : "keyword"
+                      }
+                    }
+                  },
+                  "login_user" : {
+                    "properties" : {
+                      "name" : {
+                        "type" : "keyword"
+                      },
+                      "id" : {
+                        "type" : "keyword"
+                      }
+                    }
+                  },
+                  "effective_user" : {
+                    "properties" : {
+                      "name" : {
+                        "type" : "keyword"
+                      },
+                      "id" : {
+                        "type" : "keyword"
+                      }
+                    }
+                  },
+                  "user" : {
+                    "properties" : {
+                      "name" : {
+                        "type" : "keyword"
+                      },
+                      "id" : {
+                        "type" : "keyword"
+                      }
+                    }
+                  },
+                  "group" : {
+                    "properties" : {
+                      "name" : {
+                        "type" : "keyword"
+                      },
+                      "id" : {
+                        "type" : "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "uid_after" : {
+                "type" : "keyword"
+              },
+              "gname_before" : {
+                "type" : "keyword"
+              },
+              "perm_after" : {
+                "type" : "keyword"
+              },
+              "event" : {
+                "type" : "keyword"
+              },
+              "hard_links" : {
+                "type" : "keyword"
+              },
+              "gid_before" : {
+                "type" : "keyword"
+              },
+              "perm_before" : {
+                "type" : "keyword"
+              },
+              "inode_before" : {
+                "type" : "keyword"
+              },
+              "gid_after" : {
+                "type" : "keyword"
+              },
+              "md5_before" : {
+                "type" : "keyword"
+              },
+              "diff" : {
+                "type" : "keyword"
+              },
+              "mtime_before" : {
+                "format" : "date_optional_time",
+                "type" : "date"
+              },
+              "tags" : {
+                "type" : "keyword"
+              },
+              "sha1_after" : {
+                "type" : "keyword"
+              },
+              "uname_before" : {
+                "type" : "keyword"
+              },
+              "md5_after" : {
+                "type" : "keyword"
+              },
+              "sha256_after" : {
+                "type" : "keyword"
+              },
+              "sha1_before" : {
+                "type" : "keyword"
+              },
+              "inode_after" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "cluster" : {
+            "properties" : {
+              "node" : {
+                "type" : "keyword"
+              },
+              "name" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "agent" : {
+            "properties" : {
+              "ip" : {
+                "type" : "keyword"
+              },
+              "name" : {
+                "type" : "keyword"
+              },
+              "id" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "data" : {
+            "properties" : {
+              "srcip" : {
+                "type" : "keyword"
+              },
+              "data" : {
+                "type" : "keyword"
+              },
+              "dstport" : {
+                "type" : "keyword"
+              },
+              "program" : {
+                "properties" : {
+                  "install_time" : {
+                    "type" : "keyword"
+                  },
+                  "format" : {
+                    "type" : "keyword"
+                  },
+                  "description" : {
+                    "type" : "keyword"
+                  },
+                  "section" : {
+                    "type" : "keyword"
+                  },
+                  "source" : {
+                    "type" : "keyword"
+                  },
+                  "priority" : {
+                    "type" : "keyword"
+                  },
+                  "version" : {
+                    "type" : "keyword"
+                  },
+                  "size" : {
+                    "type" : "long"
+                  },
+                  "vendor" : {
+                    "type" : "keyword"
+                  },
+                  "name" : {
+                    "type" : "keyword"
+                  },
+                  "multiarch" : {
+                    "type" : "keyword"
+                  },
+                  "location" : {
+                    "type" : "keyword"
+                  },
+                  "architecture" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "title" : {
+                "type" : "keyword"
+              },
+              "cis" : {
+                "properties" : {
+                  "result" : {
+                    "type" : "keyword"
+                  },
+                  "score" : {
+                    "type" : "long"
+                  },
+                  "fail" : {
+                    "type" : "long"
+                  },
+                  "notchecked" : {
+                    "type" : "long"
+                  },
+                  "pass" : {
+                    "type" : "long"
+                  },
+                  "rule_title" : {
+                    "type" : "keyword"
+                  },
+                  "error" : {
+                    "type" : "long"
+                  },
+                  "benchmark" : {
+                    "type" : "keyword"
+                  },
+                  "timestamp" : {
+                    "type" : "keyword"
+                  },
+                  "unknown" : {
+                    "type" : "long"
+                  },
+                  "group" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "type" : {
+                "type" : "keyword"
+              },
+              "docker" : {
+                "properties" : {
+                  "Action" : {
+                    "type" : "keyword"
+                  },
+                  "Type" : {
+                    "type" : "keyword"
+                  },
+                  "Actor" : {
+                    "properties" : {
+                      "Attributes" : {
+                        "properties" : {
+                          "image" : {
+                            "type" : "keyword"
+                          },
+                          "name" : {
+                            "type" : "keyword"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "sca" : {
+                "properties" : {
+                  "total_checks" : {
+                    "type" : "keyword"
+                  },
+                  "policy_id" : {
+                    "type" : "keyword"
+                  },
+                  "description" : {
+                    "type" : "keyword"
+                  },
+                  "failed" : {
+                    "type" : "integer"
+                  },
+                  "check" : {
+                    "properties" : {
+                      "reason" : {
+                        "type" : "keyword"
+                      },
+                      "registry" : {
+                        "type" : "keyword"
+                      },
+                      "previous_result" : {
+                        "type" : "keyword"
+                      },
+                      "process" : {
+                        "type" : "keyword"
+                      },
+                      "references" : {
+                        "type" : "keyword"
+                      },
+                      "description" : {
+                        "type" : "keyword"
+                      },
+                      "title" : {
+                        "type" : "keyword"
+                      },
+                      "directory" : {
+                        "type" : "keyword"
+                      },
+                      "rationale" : {
+                        "type" : "keyword"
+                      },
+                      "result" : {
+                        "type" : "keyword"
+                      },
+                      "remediation" : {
+                        "type" : "keyword"
+                      },
+                      "file" : {
+                        "type" : "keyword"
+                      },
+                      "compliance" : {
+                        "properties" : {
+                          "pci_dss" : {
+                            "type" : "keyword"
+                          },
+                          "hipaa" : {
+                            "type" : "keyword"
+                          },
+                          "cis_csc" : {
+                            "type" : "keyword"
+                          },
+                          "cis" : {
+                            "type" : "keyword"
+                          },
+                          "nist_800_53" : {
+                            "type" : "keyword"
+                          }
+                        }
+                      },
+                      "id" : {
+                        "type" : "keyword"
+                      },
+                      "status" : {
+                        "type" : "keyword"
+                      }
+                    }
+                  },
+                  "type" : {
+                    "type" : "keyword"
+                  },
+                  "score" : {
+                    "type" : "long"
+                  },
+                  "file" : {
+                    "type" : "keyword"
+                  },
+                  "name" : {
+                    "type" : "keyword"
+                  },
+                  "invalid" : {
+                    "type" : "keyword"
+                  },
+                  "scan_id" : {
+                    "type" : "keyword"
+                  },
+                  "passed" : {
+                    "type" : "integer"
+                  },
+                  "policy" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "netinfo" : {
+                "properties" : {
+                  "iface" : {
+                    "properties" : {
+                      "tx_packets" : {
+                        "type" : "long"
+                      },
+                      "adapter" : {
+                        "type" : "keyword"
+                      },
+                      "rx_dropped" : {
+                        "type" : "long"
+                      },
+                      "type" : {
+                        "type" : "keyword"
+                      },
+                      "mac" : {
+                        "type" : "keyword"
+                      },
+                      "mtu" : {
+                        "type" : "long"
+                      },
+                      "rx_packets" : {
+                        "type" : "long"
+                      },
+                      "rx_errors" : {
+                        "type" : "long"
+                      },
+                      "tx_errors" : {
+                        "type" : "long"
+                      },
+                      "ipv4" : {
+                        "properties" : {
+                          "broadcast" : {
+                            "type" : "keyword"
+                          },
+                          "address" : {
+                            "type" : "keyword"
+                          },
+                          "netmask" : {
+                            "type" : "keyword"
+                          },
+                          "metric" : {
+                            "type" : "long"
+                          },
+                          "gateway" : {
+                            "type" : "keyword"
+                          },
+                          "dhcp" : {
+                            "type" : "keyword"
+                          }
+                        }
+                      },
+                      "ipv6" : {
+                        "properties" : {
+                          "broadcast" : {
+                            "type" : "keyword"
+                          },
+                          "address" : {
+                            "type" : "keyword"
+                          },
+                          "metric" : {
+                            "type" : "long"
+                          },
+                          "netmask" : {
+                            "type" : "keyword"
+                          },
+                          "gateway" : {
+                            "type" : "keyword"
+                          },
+                          "dhcp" : {
+                            "type" : "keyword"
+                          }
+                        }
+                      },
+                      "tx_dropped" : {
+                        "type" : "long"
+                      },
+                      "name" : {
+                        "type" : "keyword"
+                      },
+                      "rx_bytes" : {
+                        "type" : "long"
+                      },
+                      "state" : {
+                        "type" : "keyword"
+                      },
+                      "tx_bytes" : {
+                        "type" : "long"
+                      }
+                    }
+                  }
+                }
+              },
+              "uid" : {
+                "type" : "keyword"
+              },
+              "protocol" : {
+                "type" : "keyword"
+              },
+              "gcp" : {
+                "properties" : {
+                  "severity" : {
+                    "type" : "keyword"
+                  },
+                  "resource" : {
+                    "properties" : {
+                      "type" : {
+                        "type" : "keyword"
+                      },
+                      "labels" : {
+                        "properties" : {
+                          "project_id" : {
+                            "type" : "keyword"
+                          },
+                          "location" : {
+                            "type" : "keyword"
+                          },
+                          "source_type" : {
+                            "type" : "keyword"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "jsonPayload" : {
+                    "properties" : {
+                      "vmInstanceId" : {
+                        "type" : "keyword"
+                      },
+                      "vmInstanceName" : {
+                        "type" : "keyword"
+                      },
+                      "queryName" : {
+                        "type" : "keyword"
+                      },
+                      "authAnswer" : {
+                        "type" : "keyword"
+                      },
+                      "responseCode" : {
+                        "type" : "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "dstuser" : {
+                "type" : "keyword"
+              },
+              "audit" : {
+                "properties" : {
+                  "syscall" : {
+                    "type" : "keyword"
+                  },
+                  "srcip" : {
+                    "type" : "keyword"
+                  },
+                  "gid" : {
+                    "type" : "keyword"
+                  },
+                  "enforcing" : {
+                    "type" : "keyword"
+                  },
+                  "session" : {
+                    "type" : "keyword"
+                  },
+                  "fsgid" : {
+                    "type" : "keyword"
+                  },
+                  "pid" : {
+                    "type" : "keyword"
+                  },
+                  "suid" : {
+                    "type" : "keyword"
+                  },
+                  "type" : {
+                    "type" : "keyword"
+                  },
+                  "directory" : {
+                    "properties" : {
+                      "inode" : {
+                        "type" : "keyword"
+                      },
+                      "mode" : {
+                        "type" : "keyword"
+                      },
+                      "name" : {
+                        "type" : "keyword"
+                      }
+                    }
+                  },
+                  "old-ses" : {
+                    "type" : "keyword"
+                  },
+                  "uid" : {
+                    "type" : "keyword"
+                  },
+                  "egid" : {
+                    "type" : "keyword"
+                  },
+                  "exe" : {
+                    "type" : "keyword"
+                  },
+                  "file" : {
+                    "properties" : {
+                      "inode" : {
+                        "type" : "keyword"
+                      },
+                      "mode" : {
+                        "type" : "keyword"
+                      },
+                      "name" : {
+                        "type" : "keyword"
+                      }
+                    }
+                  },
+                  "dev" : {
+                    "type" : "keyword"
+                  },
+                  "prom" : {
+                    "type" : "keyword"
+                  },
+                  "sgid" : {
+                    "type" : "keyword"
+                  },
+                  "id" : {
+                    "type" : "keyword"
+                  },
+                  "subj" : {
+                    "type" : "keyword"
+                  },
+                  "key" : {
+                    "type" : "keyword"
+                  },
+                  "op" : {
+                    "type" : "keyword"
+                  },
+                  "res" : {
+                    "type" : "keyword"
+                  },
+                  "auid" : {
+                    "type" : "keyword"
+                  },
+                  "execve" : {
+                    "properties" : {
+                      "a1" : {
+                        "type" : "keyword"
+                      },
+                      "a2" : {
+                        "type" : "keyword"
+                      },
+                      "a3" : {
+                        "type" : "keyword"
+                      },
+                      "a0" : {
+                        "type" : "keyword"
+                      }
+                    }
+                  },
+                  "euid" : {
+                    "type" : "keyword"
+                  },
+                  "old-auid" : {
+                    "type" : "keyword"
+                  },
+                  "list" : {
+                    "type" : "keyword"
+                  },
+                  "command" : {
+                    "type" : "keyword"
+                  },
+                  "old_prom" : {
+                    "type" : "keyword"
+                  },
+                  "ppid" : {
+                    "type" : "keyword"
+                  },
+                  "fsuid" : {
+                    "type" : "keyword"
+                  },
+                  "exit" : {
+                    "type" : "keyword"
+                  },
+                  "cwd" : {
+                    "type" : "keyword"
+                  },
+                  "old_enforcing" : {
+                    "type" : "keyword"
+                  },
+                  "success" : {
+                    "type" : "keyword"
+                  },
+                  "tty" : {
+                    "type" : "keyword"
+                  },
+                  "arch" : {
+                    "type" : "keyword"
+                  },
+                  "acct" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "office365" : {
+                "properties" : {
+                  "ResultStatus" : {
+                    "type" : "keyword"
+                  },
+                  "UserId" : {
+                    "type" : "keyword"
+                  },
+                  "Actor" : {
+                    "properties" : {
+                      "ID" : {
+                        "type" : "keyword"
+                      }
+                    }
+                  },
+                  "Operation" : {
+                    "type" : "keyword"
+                  },
+                  "Subscription" : {
+                    "type" : "keyword"
+                  },
+                  "ClientIP" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "virustotal" : {
+                "properties" : {
+                  "sha1" : {
+                    "type" : "keyword"
+                  },
+                  "malicious" : {
+                    "type" : "keyword"
+                  },
+                  "total" : {
+                    "type" : "keyword"
+                  },
+                  "found" : {
+                    "type" : "keyword"
+                  },
+                  "description" : {
+                    "type" : "keyword"
+                  },
+                  "positives" : {
+                    "type" : "keyword"
+                  },
+                  "source" : {
+                    "properties" : {
+                      "sha1" : {
+                        "type" : "keyword"
+                      },
+                      "file" : {
+                        "type" : "keyword"
+                      },
+                      "alert_id" : {
+                        "type" : "keyword"
+                      },
+                      "md5" : {
+                        "type" : "keyword"
+                      }
+                    }
+                  },
+                  "error" : {
+                    "type" : "keyword"
+                  },
+                  "permalink" : {
+                    "type" : "keyword"
+                  },
+                  "scan_date" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "action" : {
+                "type" : "keyword"
+              },
+              "id" : {
+                "type" : "keyword"
+              },
+              "dstip" : {
+                "type" : "keyword"
+              },
+              "hardware" : {
+                "properties" : {
+                  "ram_free" : {
+                    "type" : "long"
+                  },
+                  "cpu_name" : {
+                    "type" : "keyword"
+                  },
+                  "ram_usage" : {
+                    "type" : "long"
+                  },
+                  "serial" : {
+                    "type" : "keyword"
+                  },
+                  "ram_total" : {
+                    "type" : "long"
+                  },
+                  "cpu_cores" : {
+                    "type" : "long"
+                  },
+                  "cpu_mhz" : {
+                    "type" : "double"
+                  }
+                }
+              },
+              "timestamp" : {
+                "type" : "date"
+              },
+              "process" : {
+                "properties" : {
+                  "ruser" : {
+                    "type" : "keyword"
+                  },
+                  "egroup" : {
+                    "type" : "keyword"
+                  },
+                  "pgrp" : {
+                    "type" : "long"
+                  },
+                  "session" : {
+                    "type" : "long"
+                  },
+                  "stime" : {
+                    "type" : "long"
+                  },
+                  "pid" : {
+                    "type" : "long"
+                  },
+                  "vm_size" : {
+                    "type" : "long"
+                  },
+                  "share" : {
+                    "type" : "long"
+                  },
+                  "state" : {
+                    "type" : "keyword"
+                  },
+                  "resident" : {
+                    "type" : "long"
+                  },
+                  "nlwp" : {
+                    "type" : "long"
+                  },
+                  "rgroup" : {
+                    "type" : "keyword"
+                  },
+                  "utime" : {
+                    "type" : "long"
+                  },
+                  "priority" : {
+                    "type" : "long"
+                  },
+                  "processor" : {
+                    "type" : "long"
+                  },
+                  "nice" : {
+                    "type" : "long"
+                  },
+                  "ppid" : {
+                    "type" : "long"
+                  },
+                  "args" : {
+                    "type" : "keyword"
+                  },
+                  "start_time" : {
+                    "type" : "long"
+                  },
+                  "sgroup" : {
+                    "type" : "keyword"
+                  },
+                  "size" : {
+                    "type" : "long"
+                  },
+                  "suser" : {
+                    "type" : "keyword"
+                  },
+                  "fgroup" : {
+                    "type" : "keyword"
+                  },
+                  "euser" : {
+                    "type" : "keyword"
+                  },
+                  "tty" : {
+                    "type" : "long"
+                  },
+                  "tgid" : {
+                    "type" : "long"
+                  },
+                  "name" : {
+                    "type" : "keyword"
+                  },
+                  "cmd" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "github" : {
+                "properties" : {
+                  "actor" : {
+                    "type" : "keyword"
+                  },
+                  "org" : {
+                    "type" : "keyword"
+                  },
+                  "repo" : {
+                    "type" : "keyword"
+                  },
+                  "action" : {
+                    "type" : "keyword"
+                  },
+                  "actor_location" : {
+                    "properties" : {
+                      "country_code" : {
+                        "type" : "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "os" : {
+                "properties" : {
+                  "minor" : {
+                    "type" : "keyword"
+                  },
+                  "release" : {
+                    "type" : "keyword"
+                  },
+                  "version" : {
+                    "type" : "keyword"
+                  },
+                  "platform" : {
+                    "type" : "keyword"
+                  },
+                  "patch" : {
+                    "type" : "keyword"
+                  },
+                  "hostname" : {
+                    "type" : "keyword"
+                  },
+                  "major" : {
+                    "type" : "keyword"
+                  },
+                  "build" : {
+                    "type" : "keyword"
+                  },
+                  "display_version" : {
+                    "type" : "keyword"
+                  },
+                  "codename" : {
+                    "type" : "keyword"
+                  },
+                  "sysname" : {
+                    "type" : "keyword"
+                  },
+                  "name" : {
+                    "type" : "keyword"
+                  },
+                  "release_version" : {
+                    "type" : "keyword"
+                  },
+                  "architecture" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "osquery" : {
+                "properties" : {
+                  "calendarTime" : {
+                    "type" : "keyword"
+                  },
+                  "name" : {
+                    "type" : "keyword"
+                  },
+                  "action" : {
+                    "type" : "keyword"
+                  },
+                  "pack" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "system_name" : {
+                "type" : "keyword"
+              },
+              "vulnerability" : {
+                "properties" : {
+                  "severity" : {
+                    "type" : "keyword"
+                  },
+                  "cve" : {
+                    "type" : "keyword"
+                  },
+                  "package" : {
+                    "properties" : {
+                      "condition" : {
+                        "type" : "keyword"
+                      },
+                      "name" : {
+                        "type" : "keyword"
+                      },
+                      "generated_cpe" : {
+                        "type" : "keyword"
+                      },
+                      "source" : {
+                        "type" : "keyword"
+                      },
+                      "version" : {
+                        "type" : "keyword"
+                      },
+                      "architecture" : {
+                        "type" : "keyword"
+                      }
+                    }
+                  },
+                  "cve_version" : {
+                    "type" : "keyword"
+                  },
+                  "assigner" : {
+                    "type" : "keyword"
+                  },
+                  "cwe_reference" : {
+                    "type" : "keyword"
+                  },
+                  "published" : {
+                    "type" : "date"
+                  },
+                  "title" : {
+                    "type" : "keyword"
+                  },
+                  "rationale" : {
+                    "type" : "keyword"
+                  },
+                  "cvss" : {
+                    "properties" : {
+                      "cvss2" : {
+                        "properties" : {
+                          "base_score" : {
+                            "type" : "keyword"
+                          },
+                          "impact_score" : {
+                            "type" : "keyword"
+                          },
+                          "vector" : {
+                            "properties" : {
+                              "user_interaction" : {
+                                "type" : "keyword"
+                              },
+                              "integrity_impact" : {
+                                "type" : "keyword"
+                              },
+                              "scope" : {
+                                "type" : "keyword"
+                              },
+                              "availability" : {
+                                "type" : "keyword"
+                              },
+                              "confidentiality_impact" : {
+                                "type" : "keyword"
+                              },
+                              "attack_vector" : {
+                                "type" : "keyword"
+                              },
+                              "access_complexity" : {
+                                "type" : "keyword"
+                              },
+                              "authentication" : {
+                                "type" : "keyword"
+                              },
+                              "privileges_required" : {
+                                "type" : "keyword"
+                              }
+                            }
+                          },
+                          "exploitability_score" : {
+                            "type" : "keyword"
+                          }
+                        }
+                      },
+                      "cvss3" : {
+                        "properties" : {
+                          "base_score" : {
+                            "type" : "keyword"
+                          },
+                          "impact_score" : {
+                            "type" : "keyword"
+                          },
+                          "vector" : {
+                            "properties" : {
+                              "user_interaction" : {
+                                "type" : "keyword"
+                              },
+                              "integrity_impact" : {
+                                "type" : "keyword"
+                              },
+                              "scope" : {
+                                "type" : "keyword"
+                              },
+                              "confidentiality_impact" : {
+                                "type" : "keyword"
+                              },
+                              "availability" : {
+                                "type" : "keyword"
+                              },
+                              "attack_vector" : {
+                                "type" : "keyword"
+                              },
+                              "access_complexity" : {
+                                "type" : "keyword"
+                              },
+                              "privileges_required" : {
+                                "type" : "keyword"
+                              },
+                              "authentication" : {
+                                "type" : "keyword"
+                              }
+                            }
+                          },
+                          "exploitability_score" : {
+                            "type" : "keyword"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "updated" : {
+                    "type" : "date"
+                  }
+                }
+              },
+              "url" : {
+                "type" : "keyword"
+              },
+              "command" : {
+                "type" : "keyword"
+              },
+              "srcuser" : {
+                "type" : "keyword"
+              },
+              "extra_data" : {
+                "type" : "keyword"
+              },
+              "port" : {
+                "properties" : {
+                  "inode" : {
+                    "type" : "long"
+                  },
+                  "local_ip" : {
+                    "type" : "ip"
+                  },
+                  "protocol" : {
+                    "type" : "keyword"
+                  },
+                  "process" : {
+                    "type" : "keyword"
+                  },
+                  "remote_ip" : {
+                    "type" : "ip"
+                  },
+                  "rx_queue" : {
+                    "type" : "long"
+                  },
+                  "local_port" : {
+                    "type" : "long"
+                  },
+                  "remote_port" : {
+                    "type" : "long"
+                  },
+                  "tx_queue" : {
+                    "type" : "long"
+                  },
+                  "pid" : {
+                    "type" : "long"
+                  },
+                  "state" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "integration" : {
+                "type" : "keyword"
+              },
+              "srcport" : {
+                "type" : "keyword"
+              },
+              "aws" : {
+                "properties" : {
+                  "srcaddr" : {
+                    "type" : "ip"
+                  },
+                  "start" : {
+                    "type" : "date"
+                  },
+                  "log_info" : {
+                    "properties" : {
+                      "s3bucket" : {
+                        "type" : "keyword"
+                      }
+                    }
+                  },
+                  "dstaddr" : {
+                    "type" : "ip"
+                  },
+                  "source" : {
+                    "type" : "keyword"
+                  },
+                  "source_ip_address" : {
+                    "type" : "ip"
+                  },
+                  "createdAt" : {
+                    "type" : "date"
+                  },
+                  "accountId" : {
+                    "type" : "keyword"
+                  },
+                  "resource.instanceDetails" : {
+                    "properties" : {
+                      "launchTime" : {
+                        "type" : "date"
+                      },
+                      "networkInterfaces" : {
+                        "properties" : {
+                          "publicIp" : {
+                            "type" : "ip"
+                          },
+                          "privateIpAddress" : {
+                            "type" : "ip"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "service" : {
+                    "properties" : {
+                      "eventFirstSeen" : {
+                        "type" : "date"
+                      },
+                      "eventLastSeen" : {
+                        "type" : "date"
+                      },
+                      "count" : {
+                        "type" : "long"
+                      },
+                      "action.networkConnectionAction.remoteIpDetails" : {
+                        "properties" : {
+                          "geoLocation" : {
+                            "type" : "geo_point"
+                          },
+                          "ipAddressV4" : {
+                            "type" : "ip"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "bytes" : {
+                    "type" : "long"
+                  },
+                  "end" : {
+                    "type" : "date"
+                  },
+                  "region" : {
+                    "type" : "keyword"
+                  },
+                  "updatedAt" : {
+                    "type" : "date"
+                  }
+                }
+              },
+              "oscap" : {
+                "properties" : {
+                  "scan" : {
+                    "properties" : {
+                      "score" : {
+                        "type" : "double"
+                      },
+                      "profile" : {
+                        "properties" : {
+                          "id" : {
+                            "type" : "keyword"
+                          },
+                          "title" : {
+                            "type" : "keyword"
+                          }
+                        }
+                      },
+                      "id" : {
+                        "type" : "keyword"
+                      },
+                      "return_code" : {
+                        "type" : "long"
+                      },
+                      "content" : {
+                        "type" : "keyword"
+                      },
+                      "benchmark" : {
+                        "properties" : {
+                          "id" : {
+                            "type" : "keyword"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "check" : {
+                    "properties" : {
+                      "severity" : {
+                        "type" : "keyword"
+                      },
+                      "result" : {
+                        "type" : "keyword"
+                      },
+                      "references" : {
+                        "type" : "text"
+                      },
+                      "oval" : {
+                        "properties" : {
+                          "id" : {
+                            "type" : "keyword"
+                          }
+                        }
+                      },
+                      "identifiers" : {
+                        "type" : "text"
+                      },
+                      "description" : {
+                        "type" : "text"
+                      },
+                      "id" : {
+                        "type" : "keyword"
+                      },
+                      "title" : {
+                        "type" : "keyword"
+                      },
+                      "rationale" : {
+                        "type" : "text"
+                      }
+                    }
+                  }
+                }
+              },
+              "status" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "program_name" : {
+            "type" : "keyword"
+          },
+          "rule" : {
+            "properties" : {
+              "mail" : {
+                "type" : "boolean"
+              },
+              "tsc" : {
+                "type" : "keyword"
+              },
+              "hipaa" : {
+                "type" : "keyword"
+              },
+              "level" : {
+                "type" : "long"
+              },
+              "pci_dss" : {
+                "type" : "keyword"
+              },
+              "description" : {
+                "type" : "keyword"
+              },
+              "groups" : {
+                "type" : "keyword"
+              },
+              "cis" : {
+                "type" : "keyword"
+              },
+              "nist_800_53" : {
+                "type" : "keyword"
+              },
+              "frequency" : {
+                "type" : "long"
+              },
+              "gdpr" : {
+                "type" : "keyword"
+              },
+              "firedtimes" : {
+                "type" : "long"
+              },
+              "cve" : {
+                "type" : "keyword"
+              },
+              "mitre" : {
+                "properties" : {
+                  "technique" : {
+                    "type" : "keyword"
+                  },
+                  "id" : {
+                    "type" : "keyword"
+                  },
+                  "tactic" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "id" : {
+                "type" : "keyword"
+              },
+              "gpg13" : {
+                "type" : "keyword"
+              },
+              "info" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "title" : {
+            "type" : "keyword"
+          },
+          "type" : {
+            "type" : "text"
+          },
+          "full_log" : {
+            "type" : "text"
+          },
+          "previous_log" : {
+            "type" : "text"
+          },
+          "@version" : {
+            "type" : "text"
+          },
+          "host" : {
+            "type" : "keyword"
+          },
+          "id" : {
+            "type" : "keyword"
+          },
+          "timestamp" : {
+            "format" : "date_optional_time||epoch_millis",
+            "type" : "date"
+          },
+          "predecoder" : {
+            "properties" : {
+              "hostname" : {
+                "type" : "keyword"
+              },
+              "program_name" : {
+                "type" : "keyword"
+              },
+              "timestamp" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "previous_output" : {
+            "type" : "keyword"
+          },
+          "offset" : {
+            "type" : "keyword"
+          },
+          "manager" : {
+            "properties" : {
+              "name" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "decoder" : {
+            "properties" : {
+              "parent" : {
+                "type" : "keyword"
+              },
+              "fts" : {
+                "type" : "long"
+              },
+              "name" : {
+                "type" : "keyword"
+              },
+              "ftscomment" : {
+                "type" : "keyword"
+              },
+              "accumulate" : {
+                "type" : "long"
+              }
+            }
+          },
+          "message" : {
+            "type" : "text"
+          },
+          "command" : {
+            "type" : "keyword"
+          },
+          "input" : {
+            "properties" : {
+              "type" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "@timestamp" : {
+            "type" : "date"
+          },
+          "location" : {
+            "type" : "keyword"
+          },
+          "GeoLocation" : {
+            "properties" : {
+              "timezone" : {
+                "type" : "text"
+              },
+              "area_code" : {
+                "type" : "long"
+              },
+              "ip" : {
+                "type" : "keyword"
+              },
+              "latitude" : {
+                "type" : "double"
+              },
+              "coordinates" : {
+                "type" : "double"
+              },
+              "continent_code" : {
+                "type" : "text"
+              },
+              "city_name" : {
+                "type" : "keyword"
+              },
+              "country_code2" : {
+                "type" : "text"
+              },
+              "dma_code" : {
+                "type" : "long"
+              },
+              "country_name" : {
+                "type" : "keyword"
+              },
+              "country_code3" : {
+                "type" : "text"
+              },
+              "region_name" : {
+                "type" : "keyword"
+              },
+              "location" : {
+                "type" : "geo_point"
+              },
+              "real_region_name" : {
+                "type" : "keyword"
+              },
+              "postal_code" : {
+                "type" : "keyword"
+              },
+              "longitude" : {
+                "type" : "double"
+              }
+            }
+          },
+          "event" : {
+            "properties": {
+                "code": {
+                    "type": "keyword"
+                },
+                "category" : {
+                    "type": "keyword"
+                },
+                "module": {
+                    "type": "keyword"
+                },
+                "original": {
+                    "type": "keyword"
+                }
+            }
+          },
+          "process": {
+            "properties": {
+                "pid": {
+                    "type": "keyword"
+                },
+                "name": {
+                    "type": "keyword"
+                },
+                "executable": {
+                    "type": "keyword"
+                },
+                "parent": {
+                    "properties": {
+                        "executable": {
+                            "type": "keyword"
+                        },
+                        "pid": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "thread": {
+                    "properties": {
+                        "id": {
+                            "type": "keyword"
+                        }
+                    }
+                }
+            }
+          },
+          "source": {
+            "properties": {
+                "user": {
+                    "properties": {
+                        "name": {
+                            "type": "keyword"
+                        },
+                        "id": {
+                            "type": "keyword"
+                        },
+                        "group": {
+                            "properties": {
+                                "id": {
+                                    "type": "keyword"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+          },
+          "destination": {
+            "properties": {
+                "user": {
+                    "properties": {
+                        "id": {
+                            "type": "keyword"
+                        }
+                    }
+                },
+                "domain": {
+                    "type": "keyword"
+                }
+            }
+          }
+        }
+      },
+      "aliases" : { }
+  }
