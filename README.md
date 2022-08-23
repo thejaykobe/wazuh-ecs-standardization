@@ -7,6 +7,7 @@ Linux:
 
 Windows:
 - Security event logs
+- Sysmon event logs
 
 ### NOTE ###
 
@@ -15,6 +16,8 @@ It is recommended that you test these configs in a staging environment before de
 Monitoring the elastic ingest nodes usage is highly recommended after these changes are made, there isn't any scripting done so it shouldn't be extremely resource greedy, but you should still monitor cpu usage
 
 You will have to close or delete your existing indexes for these changes to occur, otherwise the change will occur during the next index cycle usually at midnight unless you're using new index management
+
+- The field "full_log" has been a line to be removed from being indexed; if you wish to keep this field remove the line
 
 ### Implementation for wazuh-alerts-* only ###
 
@@ -40,7 +43,8 @@ either use filebeat to update the ingest template or dev tools
 
 ### To Do ###
 
-Add support for sysmon, and refine exsisting fields
+Continue to refine exsisting fields
+Add more advanced event information
 
 
 
