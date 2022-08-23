@@ -11,6 +11,10 @@ Windows:
 
 ### NOTE ###
 
+- Auditd was enabled on a test host and the audit.rules are enabled from Neo23x0 -> https://github.com/Neo23x0/auditd
+
+- Sysmon was enabled with the sysmon.xml file from olafhartong using the "verbose-sysmonconfig-excludes-only" -> https://github.com/olafhartong/sysmon-modular
+
 It is recommended that you test these configs in a staging environment before deploying them to production.
 
 Monitoring the elastic ingest nodes usage is highly recommended after these changes are made, there isn't any scripting done so it shouldn't be extremely resource greedy, but you should still monitor cpu usage
