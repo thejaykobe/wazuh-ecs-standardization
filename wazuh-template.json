@@ -449,6 +449,9 @@
         "destination.user.domain",
         "destination.user.id",
         "destination.user.name",
+        "dns.question.name",
+        "dns.answers",
+        "dns.response_code",
         "event",
         "event.action",
         "event.category",
@@ -461,8 +464,13 @@
         "event.type",
         "file.name",
         "file.path",
+        "network.protocol",
+        "observer.process.pid",
         "process.binary",
         "process.command_line",
+        "process.code_signature.status",
+        "process.code_signature.valid",
+        "process.code_signature.signing_id",
         "process.executable",
         "process.name",
         "process.parent.command_line",
@@ -470,6 +478,7 @@
         "process.parent.pid",
         "process.pid",
         "process.thread.id",
+        "process.tty",
         "rule.description",
         "source.domain",
         "source.user.group.id",
@@ -1878,6 +1887,23 @@
                 }
             }
           },
+          "dns": {
+            "properties": {
+              "answers": {
+                "type": "keyword"
+              },
+              "reponse_code": {
+                "type": "keyword"
+              },
+              "question": {
+                "properties": {
+                  "name": {
+                    "type": "keyword"
+                  }
+                }
+              }
+            }
+          },
           "event": {
             "properties": {
                 "created": {
@@ -1925,6 +1951,24 @@
                 }
             }
           },
+          "network": {
+            "properties": {
+              "protocol": {
+                "type": "keyword"
+              }
+            }
+          },
+          "observer":{
+            "properties": {
+              "process": {
+                "properties":{
+                  "pid": {
+                    "type": "keyword"
+                  }
+                }
+              }
+            }
+          },
           "process": {
             "properties": {
                 "binary": {
@@ -1961,6 +2005,22 @@
                             "type": "keyword"
                         }
                     }
+                },
+                "tty": {
+                  "type": "keyword"
+                },
+                "code_signature": {
+                  "properties": {
+                    "status": {
+                      "type": "keyword"
+                    },
+                    "valid": {
+                      "type": "keyword"
+                    },
+                    "signing_id": {
+                      "type": "keyword"
+                    }
+                  }
                 }
             }
           },

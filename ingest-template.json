@@ -102,6 +102,114 @@
     },
     {
         "rename": {
+            "if": "ctx.decoder.name == 'auditd'",
+            "field": "data.audit.srcip",
+            "target_field": "source.ip",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.decoder.name == 'auditd'",
+            "field": "data.audit.file.name",
+            "target_field": "file.name",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.decoder.name == 'auditd'",
+            "field": "data.audit.directory.name",
+            "target_field": "file.path",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.event.module == 'wazuh'",
+            "field": "data.srcuser",
+            "target_field": "source.user.name",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.event.module == 'wazuh'",
+            "field": "data.dstuser",
+            "target_field": "destination.user.name",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.event.module == 'wazuh'",
+            "field": "data.command",
+            "target_field": "process.command_line",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.event.module == 'wazuh'",
+            "field": "data.pwd",
+            "target_field": "file.path",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.event.module == 'wazuh'",
+            "field": "data.tty",
+            "target_field": "process.tty",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.event.module == 'wazuh'",
+            "field": "data.srcip",
+            "target_field": "source.ip",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.event.module == 'wazuh'",
+            "field": "data.srcport",
+            "target_field": "source.port",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.event.module == 'wazuh'",
+            "field": "data.dstip",
+            "target_field": "destination.ip",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.event.module == 'wazuh'",
+            "field": "data.dstport",
+            "target_field": "destination.port",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
             "if": "ctx.decoder.name == 'windows_eventchannel'",
             "field": "data.win.eventdata.category",
             "target_field": "event.category",
@@ -149,7 +257,7 @@
         "rename": {
             "if": "ctx.decoder.name == 'windows_eventchannel'",
             "field": "data.win.system.processID",
-            "target_field": "process.pid",
+            "target_field": "observer.process.pid",
             "ignore_failure": true,
             "ignore_missing": true
         }
@@ -408,6 +516,123 @@
             "if":"ctx.decoder.name == 'windows_eventchannel'",
             "field": "data.win.eventdata.sourceIp",
             "target_field": "source.ip",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.decoder.name == 'windows_eventchannel'",
+            "field": "data.win.eventdata.ruleName",
+            "target_field": "rule.description",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.decoder.name == 'windows_eventchannel'",
+            "field": "data.win.eventdata.signatureStatus",
+            "target_field": "process.code_signature.status",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.decoder.name == 'windows_eventchannel'",
+            "field": "data.win.eventdata.signed",
+            "target_field": "process.code_signature.valid",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.decoder.name == 'windows_eventchannel'",
+            "field": "data.win.eventdata.signature",
+            "target_field": "process.code_signature.signing_id",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.decoder.name == 'windows_eventchannel'",
+            "field": "data.win.eventdata.sourceImage",
+            "target_field": "process.parent.executable",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.decoder.name == 'windows_eventchannel'",
+            "field": "data.win.eventdata.sourceProcessId",
+            "target_field": "process.parent.pid",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.decoder.name == 'windows_eventchannel'",
+            "field": "data.win.eventdata.sourceUser",
+            "target_field": "source.user.name",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.decoder.name == 'windows_eventchannel'",
+            "field": "data.win.eventdata.targetImage",
+            "target_field": "process.executable",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.decoder.name == 'windows_eventchannel'",
+            "field": "data.win.eventdata.targetProcessId",
+            "target_field": "process.pid",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.decoder.name == 'windows_eventchannel'",
+            "field": "data.win.eventdata.targetUser",
+            "target_field": "destination.user.name",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.decoder.name == 'windows_eventchannel'",
+            "field": "data.win.eventdata.queryName",
+            "target_field": "dns.question.name",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.decoder.name == 'windows_eventchannel'",
+            "field": "data.win.eventdata.queryResults",
+            "target_field": "dns.answers",
+            "ignore_failure": true,
+            "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+            "if": "ctx.decoder.name == 'windows_eventchannel'",
+            "field": "data.win.eventdata.queryStatus",
+            "target_field": "dns.response_code",
             "ignore_failure": true,
             "ignore_missing": true
         }
