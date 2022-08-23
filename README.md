@@ -9,6 +9,10 @@ Windows:
 - Security event logs
 - Sysmon event logs
 
+### Example ###
+
+![alt text](https://github.com/thejaykobe/wazuh-ecs-standardization/blob/main/Example-sysmon-event%20id%201.png?raw=true)
+
 ### NOTE ###
 
 - Auditd was enabled on a test host and the audit.rules are enabled from Neo23x0 -> https://github.com/Neo23x0/auditd
@@ -61,7 +65,4 @@ You will basically follow the steps from above, and you'll also need to add the 
 
 Continue to refine exsisting fields
 Add more advanced event information
-
-
-
 
