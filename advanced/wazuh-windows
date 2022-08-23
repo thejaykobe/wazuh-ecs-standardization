@@ -1,0 +1,986 @@
+{
+      "description" : "Wazuh windows pipeline - updated by thejaykobe https://github.com/thejaykobe/wazuh-ecs-standardization",
+      "processors" : [
+        {
+            "rename": {
+                "field": "data.win.eventdata.category",
+                "target_field": "event.category",
+                "ignore_missing": true,
+                "ignore_failure": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.processName",
+                "target_field": "process.name",
+                "ignore_missing": true,
+                "ignore_failure": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.system.eventID",
+                "target_field": "event.code",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.subjectUserSid",
+                "target_field": "source.user.id",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.system.channel",
+                "target_field": "event.module",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.system.processID",
+                "target_field": "observer.process.pid",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.system.message",
+                "target_field": "event.original",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.targetUserSid",
+                "target_field": "destination.user.id",
+                "ignore_missing": true,
+                "ignore_failure": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.system.computer",
+                "target_field": "destination.domain",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.newProcessName",
+                "target_field": "process.executable",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.parentProcessName",
+                "target_field": "process.parent.executable",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.system.threadID",
+                "target_field": "process.thread.id",
+                "ignore_missing": true,
+                "ignore_failure": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.binary",
+                "target_field": "process.binary",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.image",
+                "target_field": "process.executable",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.processId",
+                "target_field": "process.pid",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.targetFilename",
+                "target_field": "file.name",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.creationUtcTime",
+                "target_field": "event.created",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.utcTime",
+                "target_field": "event.time",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.commandLine",
+                "target_field": "process.command_line",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.currentDirectory",
+                "target_field": "file.path",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.hashes",
+                "target_field": "event.hashes",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.originalFileName",
+                "target_field": "file.name",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.parentCommandLine",
+                "target_field": "process.parent.command_line",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.parentImage",
+                "target_field": "process.parent.executable",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.parentProcessId",
+                "target_field": "process.parent.pid",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.parentUser",
+                "target_field": "source.user.name",
+                "ignore_failure": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.subjectUserName",
+                "target_field": "source.user.name",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.user",
+                "target_field": "destination.user.name",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "if":"ctx.decoder.name == 'windows_eventchannel'",
+                "field": "data.win.eventdata.subjectDomainName",
+                "target_field": "source.domain",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "if":"ctx.decoder.name == 'windows_eventchannel'",
+                "field": "data.win.eventdata.targetObject",
+                "target_field": "registry.hive",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.details",
+                "target_field": "registry.path",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.sourcePort",
+                "target_field": "source.port",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.destinationPort",
+                "target_field": "destination.port",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "if":"ctx.decoder.name == 'windows_eventchannel'",
+                "field": "data.win.eventdata.destinationIp",
+                "target_field": "destination.ip",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "if":"ctx.decoder.name == 'windows_eventchannel'",
+                "field": "data.win.eventdata.sourceIp",
+                "target_field": "source.ip",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.ruleName",
+                "target_field": "rule.description",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.signatureStatus",
+                "target_field": "process.code_signature.status",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.signed",
+                "target_field": "process.code_signature.valid",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.signature",
+                "target_field": "process.code_signature.signing_id",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.sourceImage",
+                "target_field": "process.parent.executable",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.sourceProcessId",
+                "target_field": "process.parent.pid",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.sourceUser",
+                "target_field": "source.user.name",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.targetImage",
+                "target_field": "process.executable",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.targetProcessId",
+                "target_field": "process.pid",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.targetUser",
+                "target_field": "destination.user.name",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.queryName",
+                "target_field": "dns.question.name",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.queryResults",
+                "target_field": "dns.answers",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.win.eventdata.queryStatus",
+                "target_field": "dns.response_code",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "dissect": {
+                "if": "ctx.decoder.name == 'windows_eventchannel'",
+                "field": "source.user.name",
+                "pattern": "%{source.user.domain->}\\%{source.user.name}",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "dissect": {
+                "if": "ctx.decoder.name == 'windows_eventchannel'",
+                "field": "destination.user.name",
+                "pattern": "%{destination.user.domain->}\\%{destination.user.name}",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '1'",
+                "field": "event.category",
+                "value": "process",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '1'",
+                "field": "event.type",
+                "value": "start",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '1'",
+                "field": "event.action",
+                "value": "created-process",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '2'",
+                "field": "event.category",
+                "value": "process",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '2'",
+                "field": "event.type",
+                "value": "change",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '2'",
+                "field": "event.action",
+                "value": "created-file",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '3'",
+                "field": "event.category",
+                "value": "network",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '3'",
+                "field": "event.type",
+                "value": "start",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '3'",
+                "field": "event.action",
+                "value": "created-connection",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '4'",
+                "field": "event.category",
+                "value": "process",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '4'",
+                "field": "event.type",
+                "value": "change",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '4'",
+                "field": "event.action",
+                "value": "change-process",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '5'",
+                "field": "event.category",
+                "value": "process",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '5'",
+                "field": "event.type",
+                "value": "end",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '5'",
+                "field": "event.action",
+                "value": "end-process",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '6'",
+                "field": "event.category",
+                "value": "driver",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '6'",
+                "field": "event.type",
+                "value": "start",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '6'",
+                "field": "event.action",
+                "value": "created-driver",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '7'",
+                "field": "event.category",
+                "value": "process",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '7'",
+                "field": "event.type",
+                "value": "start",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '7'",
+                "field": "event.action",
+                "value": "created-process",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '8'",
+                "field": "event.category",
+                "value": "process",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '8'",
+                "field": "event.type",
+                "value": "start",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '8'",
+                "field": "event.action",
+                "value": "created-process",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '9'",
+                "field": "event.category",
+                "value": "file",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '9'",
+                "field": "event.type",
+                "value": "allowed",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '9'",
+                "field": "event.action",
+                "value": "access-file",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '10'",
+                "field": "event.category",
+                "value": "process",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '10'",
+                "field": "event.type",
+                "value": "access",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '10'",
+                "field": "event.action",
+                "value": "access-process",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '11'",
+                "field": "event.category",
+                "value": "file",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '11'",
+                "field": "event.type",
+                "value": "creation",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '11'",
+                "field": "event.action",
+                "value": "created-file",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '12'",
+                "field": "event.category",
+                "value": "registry",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '12'",
+                "field": "event.type",
+                "value": "creation",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '12'",
+                "field": "event.action",
+                "value": "created-registry",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '13'",
+                "field": "event.category",
+                "value": "registry",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '13'",
+                "field": "event.type",
+                "value": "change",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '13'",
+                "field": "event.action",
+                "value": "change-registry",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '14'",
+                "field": "event.category",
+                "value": "registry",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '14'",
+                "field": "event.type",
+                "value": "change",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '14'",
+                "field": "event.action",
+                "value": "change-registry",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '15'",
+                "field": "event.category",
+                "value": "file",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '15'",
+                "field": "event.type",
+                "value": "creation",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '15'",
+                "field": "event.action",
+                "value": "created-file",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '16'",
+                "field": "event.category",
+                "value": "service",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '16'",
+                "field": "event.type",
+                "value": "change",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '16'",
+                "field": "event.action",
+                "value": "change-service",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '17'",
+                "field": "event.category",
+                "value": "file",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '17'",
+                "field": "event.type",
+                "value": "change",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '17'",
+                "field": "event.action",
+                "value": "change-file",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '18'",
+                "field": "event.category",
+                "value": "network",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '18'",
+                "field": "event.type",
+                "value": "start",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '18'",
+                "field": "event.action",
+                "value": "created-connection",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '22'",
+                "field": "event.category",
+                "value": "network",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '22'",
+                "field": "event.type",
+                "value": "connection",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '22'",
+                "field": "event.action",
+                "value": "created-connection",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '23'",
+                "field": "event.category",
+                "value": "file",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '23'",
+                "field": "event.type",
+                "value": "deletion",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '23'",
+                "field": "event.action",
+                "value": "deleted-file",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '24'",
+                "field": "event.category",
+                "value": "clipboard",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '24'",
+                "field": "event.type",
+                "value": "creation",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '24'",
+                "field": "event.action",
+                "value": "created-clipboard",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '25'",
+                "field": "event.category",
+                "value": "process",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '25'",
+                "field": "event.type",
+                "value": "change",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '25'",
+                "field": "event.action",
+                "value": "change-process",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '26'",
+                "field": "event.category",
+                "value": "file",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '26'",
+                "field": "event.type",
+                "value": "deletion",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '26'",
+                "field": "event.action",
+                "value": "deleted-file",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '4688'",
+                "field": "event.category",
+                "value": "process",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '4688'",
+                "field": "event.type",
+                "value": "start",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.event.code == '4688'",
+                "field": "event.action",
+                "value": "created-process",
+                "ignore_failure": true
+            }
+        }
+    ]
+}

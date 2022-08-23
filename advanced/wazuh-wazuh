@@ -1,0 +1,77 @@
+{
+      "description" : "Wazuh catch-all pipeline - updated by thejaykobe https://github.com/thejaykobe/wazuh-ecs-standardization",
+      "processors" : [
+        {
+            "rename": {
+                "field": "data.srcuser",
+                "target_field": "source.user.name",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.dstuser",
+                "target_field": "destination.user.name",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.command",
+                "target_field": "process.command_line",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.pwd",
+                "target_field": "file.path",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.tty",
+                "target_field": "process.tty",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.srcip",
+                "target_field": "source.ip",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.srcport",
+                "target_field": "source.port",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.dstip",
+                "target_field": "destination.ip",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.dstport",
+                "target_field": "destination.port",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        }
+    ]
+}

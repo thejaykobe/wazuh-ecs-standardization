@@ -1,0 +1,85 @@
+{
+      "description" : "Wazuh auditd pipeline - updated by thejaykobe https://github.com/thejaykobe/wazuh-ecs-standardization",
+      "processors" : [
+          {
+            "rename": {
+                "field": "data.audit.uid",
+                "target_field": "source.user.id",
+                "ignore_missing": true,
+                "ignore_failure": true  
+            } 
+        },
+        {
+            "rename": {
+                "field": "data.audit.gid",
+                "target_field": "source.user.group.id",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.audit.pid",
+                "target_field": "process.pid",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.audit.ppid",
+                "target_field": "process.parent.pid",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.audit.exe",
+                "target_field": "process.executable",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.audit.srcip",
+                "target_field": "source.ip",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.audit.file.name",
+                "target_field": "file.name",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "data.audit.directory.name",
+                "target_field": "file.path",
+                "ignore_failure": true,
+                "ignore_missing": true
+            }
+        },
+        {
+            "set": {
+                "field": "process.command_line",
+                "value": "{{data.audit.command}}",
+                "ignore_failure": true,
+                "ignore_empty_value": true
+            }
+        },
+        {
+            "set": {
+                "field": "process.command_line",
+                "value": "{{data.audit.execve.a0}} {{data.audit.execve.a1}} {{data.audit.execve.a2}} {{data.audit.execve.a3}} {{data.audit.execve.a4}} {{data.audit.execve.a5}} {{data.audit.execve.a6}} {{data.audit.execve.a7}} {{data.audit.execve.a8}} {{data.audit.execve.a9}} {{data.audit.execve.a10}} {{data.audit.execve.a11}} {{data.audit.execve.a12}} {{data.audit.execve.a13}} {{data.audit.execve.a14}} {{data.audit.execve.a15}} {{data.audit.execve.a16}} {{data.audit.execve.a17}} {{data.audit.execve.a18}} {{data.audit.execve.a19}} {{data.audit.execve.a20}}",
+                "ignore_failure": true,
+                "ignore_empty_value": true
+            }
+        }
+    ]
+}

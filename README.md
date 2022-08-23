@@ -23,6 +23,8 @@ You will have to close or delete your existing indexes for these changes to occu
 
 - The field "full_log" has been a line to be removed from being indexed; if you wish to keep this field remove the line
 
+### Easy Deployment ###
+
 ### Implementation for wazuh-alerts-* only ###
 
 backup the original wazuh-template.json file (/etc/filebeat/wazuh-template.json)
@@ -44,6 +46,16 @@ The same process will be for archives however you will be targeting the followin
 ls /usr/share/filebeat/module/wazuh/archives/ingest/pipeline.json
 
 either use filebeat to update the ingest template or dev tools
+
+### Advanced Deployment ###
+
+If you want to specificy dedicated pipelines per log type there is the advanced folder
+
+You will basically follow the steps from above, and you'll also need to add the following pipelines in dev tools or api like so:
+
+- PUT _ingest/pipeline/wazuh-auditd
+- PUT _ingest/pipeline/wazuh-windows
+- PUT _ingest/pipeline/wazuh-wazuh
 
 ### To Do ###
 
