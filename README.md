@@ -1,4 +1,4 @@
-The purpose of this project is to remap the Wazuh data model to align as much as possible with ECS format
+The purpose of this project is to remap the Wazuh data model to align as much as possible with ECS format based on the csv provided by elastic found here: https://github.com/elastic/ecs/blob/main/generated/csv/fields.csv
 
 ### Supported Log Sources ###
 
