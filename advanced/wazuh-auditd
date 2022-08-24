@@ -80,6 +80,278 @@
                 "ignore_failure": true,
                 "ignore_empty_value": true
             }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '0'",
+                "field": "source.user.name",
+                "value": "root",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '1'",
+                "field": "source.user.name",
+                "value": "daemon",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '2'",
+                "field": "source.user.name",
+                "value": "bin",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '3'",
+                "field": "source.user.name",
+                "value": "sys",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '4'",
+                "field": "source.user.name",
+                "value": "sync",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '5'",
+                "field": "source.user.name",
+                "value": "games",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '6'",
+                "field": "source.user.name",
+                "value": "man",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '7'",
+                "field": "source.user.name",
+                "value": "lp",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '8'",
+                "field": "source.user.name",
+                "value": "mail",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '9'",
+                "field": "source.user.name",
+                "value": "news",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '10'",
+                "field": "source.user.name",
+                "value": "uucp",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '13'",
+                "field": "source.user.name",
+                "value": "proxy",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '33'",
+                "field": "source.user.name",
+                "value": "www-data",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '34'",
+                "field": "source.user.name",
+                "value": "backup",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '38'",
+                "field": "source.user.name",
+                "value": "list",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '39'",
+                "field": "source.user.name",
+                "value": "irc",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '41'",
+                "field": "source.user.name",
+                "value": "gnats",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '65534'",
+                "field": "source.user.name",
+                "value": "nobody",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '100'",
+                "field": "source.user.name",
+                "value": "systemd-network",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '101'",
+                "field": "source.user.name",
+                "value": "systemd-resolve",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '102'",
+                "field": "source.user.name",
+                "value": "syslog",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '103'",
+                "field": "source.user.name",
+                "value": "messagebus",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '104'",
+                "field": "source.user.name",
+                "value": "apt",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '105'",
+                "field": "source.user.name",
+                "value": "lxd",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '106'",
+                "field": "source.user.name",
+                "value": "uuidd",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '107'",
+                "field": "source.user.name",
+                "value": "dnsmasq",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '108'",
+                "field": "source.user.name",
+                "value": "landscape",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '109'",
+                "field": "source.user.name",
+                "value": "pollinate",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '110'",
+                "field": "source.user.name",
+                "value": "sshd",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '111'",
+                "field": "source.user.name",
+                "value": "ossec",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '112'",
+                "field": "source.user.name",
+                "value": "ossecm",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '113'",
+                "field": "source.user.name",
+                "value": "ossecr",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '114'",
+                "field": "source.user.name",
+                "value": "elasticsearch",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.id == '115'",
+                "field": "source.user.name",
+                "value": "kibana",
+                "ignore_failure": true
+            }
         }
     ]
 }

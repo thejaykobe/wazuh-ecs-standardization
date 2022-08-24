@@ -66,3 +66,10 @@ You will basically follow the steps from above, and you'll also need to add the 
 Continue to refine exsisting fields
 Add more advanced event information
 
+### Additions not "ECS" ###
+
+Auditd:
+- added support for user id to translate into source.user.name
+
+Sysmon:
+- Added a source or destination machine accounts value in the tags field

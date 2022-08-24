@@ -981,6 +981,22 @@
                 "value": "created-process",
                 "ignore_failure": true
             }
+        },
+        {
+            "set": {
+                "if": "ctx.source.user.name =~ /$/",
+                "field": "tags",
+                "value": "source-machine-account",
+                "ignore_failure": true
+            }
+        },
+        {
+            "set": {
+                "if": "ctx.destination.user.name =~ /$/",
+                "field": "tags",
+                "value": "destination-machine-account",
+                "ignore_failure": true
+            }
         }
     ]
 }
