@@ -673,6 +673,15 @@
             "ignore_missing": true
         }
     },
+    {
+        "grok": {
+            "if": "ctx.predecoder.program_name == 'snoopy'",
+            "field": "full_log",
+            "patterns": ["(?=^.*?: %{DATA:event.created} %{DATA:destination.hostname} snoopy: uid=%{DATA:source.user.id} pid=%{DATA:process.pid} currentdir=%{DATA:file.path} suser=%{DATA:source.user.name} duser=%{DATA:destination.user.name} domain=%{DATA:destination.domain} ppid=%{DATA:process.parent.pid} cmdline=%{DATA:process.command_line}$)?"],
+            "ignore_missing": true,
+            "ignore_failure": true
+        }
+    },
       { "remove": { "field": "message", "ignore_missing": true, "ignore_failure": true } },
       { "remove": { "field": "ecs", "ignore_missing": true, "ignore_failure": true } },
       { "remove": { "field": "beat", "ignore_missing": true, "ignore_failure": true } },

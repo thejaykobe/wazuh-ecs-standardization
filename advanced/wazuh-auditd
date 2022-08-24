@@ -67,6 +67,7 @@
         },
         {
             "set": {
+                "if": "ctx.data.audit.command != null",
                 "field": "process.command_line",
                 "value": "{{data.audit.command}}",
                 "ignore_failure": true,
@@ -75,6 +76,7 @@
         },
         {
             "set": {
+                "if": "ctx.data.audit.execve.a0 != null",
                 "field": "process.command_line",
                 "value": "{{data.audit.execve.a0}} {{data.audit.execve.a1}} {{data.audit.execve.a2}} {{data.audit.execve.a3}} {{data.audit.execve.a4}} {{data.audit.execve.a5}} {{data.audit.execve.a6}} {{data.audit.execve.a7}} {{data.audit.execve.a8}} {{data.audit.execve.a9}} {{data.audit.execve.a10}} {{data.audit.execve.a11}} {{data.audit.execve.a12}} {{data.audit.execve.a13}} {{data.audit.execve.a14}} {{data.audit.execve.a15}} {{data.audit.execve.a16}} {{data.audit.execve.a17}} {{data.audit.execve.a18}} {{data.audit.execve.a19}} {{data.audit.execve.a20}}",
                 "ignore_failure": true,

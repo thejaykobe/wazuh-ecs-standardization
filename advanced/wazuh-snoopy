@@ -1,0 +1,15 @@
+{
+      "description" : "Wazuh linux-snoopy pipeline - updated by thejaykobe https://github.com/thejaykobe/wazuh-ecs-standardization",
+      "processors" : [
+        {
+            "grok": {
+                "field": "full_log",
+                "patterns": ["(?=^.*?: %{DATA:event.created} %{DATA:destination.hostname} snoopy: uid=%{DATA:source.user.id} pid=%{DATA:process.pid} currentdir=%{DATA:file.path} suser=%{DATA:source.user.name} duser=%{DATA:destination.user.name} domain=%{DATA:destination.domain} ppid=%{DATA:process.parent.pid} cmdline=%{DATA:process.command_line}$)?"],
+                "ignore_missing": true,
+                "ignore_failure": true
+            }
+        }
+    ]
+}
+
+

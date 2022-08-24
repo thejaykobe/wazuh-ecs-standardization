@@ -4,6 +4,7 @@ The purpose of this project is to remap the Wazuh data model to align as much as
 
 Linux:
 - Auditd
+- Snoopy auditing for linux
 
 Windows:
 - Security event logs
@@ -18,6 +19,14 @@ Windows:
 - Auditd was enabled on a test host and the audit.rules are enabled from Neo23x0 -> https://github.com/Neo23x0/auditd
 
 - Sysmon was enabled with the sysmon.xml file from olafhartong using the "verbose-sysmonconfig-excludes-only" -> https://github.com/olafhartong/sysmon-modular
+
+- Snoopy was enabled with the following config in '/etc/snoopy.ini'
+
+'message_format = "[%{datetime}] %{hostname} snoopy: uid=%{uid} pid=%{pid} currentdir=%{cwd} suser=%{login} duser=%{tty_username} domain=%{domain} ppid=%{ppid} cmdline=%{cmdline}"'
+
+Snoopy can be found here ---> https://github.com/a2o/snoopy
+
+---
 
 It is recommended that you test these configs in a staging environment before deploying them to production.
 

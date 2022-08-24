@@ -55,21 +55,6 @@
           "ignore_failure": false
         }
       },
-      { "remove": { "field": "message", "ignore_missing": true, "ignore_failure": true } },
-      { "remove": { "field": "ecs", "ignore_missing": true, "ignore_failure": true } },
-      { "remove": { "field": "beat", "ignore_missing": true, "ignore_failure": true } },
-      { "remove": { "field": "input_type", "ignore_missing": true, "ignore_failure": true } },
-      { "remove": { "field": "tags", "ignore_missing": true, "ignore_failure": true } },
-      { "remove": { "field": "count", "ignore_missing": true, "ignore_failure": true } },
-      { "remove": { "field": "@version", "ignore_missing": true, "ignore_failure": true } },
-      { "remove": { "field": "log", "ignore_missing": true, "ignore_failure": true } },
-      { "remove": { "field": "offset", "ignore_missing": true, "ignore_failure": true } },
-      { "remove": { "field": "type", "ignore_missing": true, "ignore_failure": true } },
-      { "remove": { "field": "host", "ignore_missing": true, "ignore_failure": true } },
-      { "remove": { "field": "fields", "ignore_missing": true, "ignore_failure": true } },
-      { "remove": { "field": "fileset", "ignore_missing": true, "ignore_failure": true } },
-      { "remove": { "field": "service", "ignore_missing": true, "ignore_failure": true } },
-      { "remove": { "field": "full_log", "ignore_missing": true, "ignore_failure": true } },
       {
         "pipeline": {
             "if": "ctx.decoder.name == 'auditd'",
@@ -90,6 +75,28 @@
             "name": "wazuh-wazuh",
             "ignore_failure": true
         }
-      }
+      },
+      {
+        "pipeline": {
+          "if": "ctx.predecoder.program_name == 'snoopy'",
+          "name": "wazuh-snoopy",
+          "ignore_failure": true
+        }
+      },
+      { "remove": { "field": "message", "ignore_missing": true, "ignore_failure": true } },
+      { "remove": { "field": "ecs", "ignore_missing": true, "ignore_failure": true } },
+      { "remove": { "field": "beat", "ignore_missing": true, "ignore_failure": true } },
+      { "remove": { "field": "input_type", "ignore_missing": true, "ignore_failure": true } },
+      { "remove": { "field": "tags", "ignore_missing": true, "ignore_failure": true } },
+      { "remove": { "field": "count", "ignore_missing": true, "ignore_failure": true } },
+      { "remove": { "field": "@version", "ignore_missing": true, "ignore_failure": true } },
+      { "remove": { "field": "log", "ignore_missing": true, "ignore_failure": true } },
+      { "remove": { "field": "offset", "ignore_missing": true, "ignore_failure": true } },
+      { "remove": { "field": "type", "ignore_missing": true, "ignore_failure": true } },
+      { "remove": { "field": "host", "ignore_missing": true, "ignore_failure": true } },
+      { "remove": { "field": "fields", "ignore_missing": true, "ignore_failure": true } },
+      { "remove": { "field": "fileset", "ignore_missing": true, "ignore_failure": true } },
+      { "remove": { "field": "service", "ignore_missing": true, "ignore_failure": true } },
+      { "remove": { "field": "full_log", "ignore_missing": true, "ignore_failure": true } }
     ]
   }
